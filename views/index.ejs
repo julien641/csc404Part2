@@ -1,0 +1,27 @@
+<div class="container">
+        <div class="col-6 center">
+    
+          <span>
+            <img src="images/ram.jpg" alt="">
+          </span>
+        </div>
+        <div class="col-6 center">
+          <span>
+          <h1>Internship Approval System</h1>
+          <p>The Grade Input Page will prompt users for their Name, Letter grade for courses: <hr>
+          <ul>
+           <% courses.forEach(clas => {%>
+          	<li> <%= clas %> </li>
+
+            <% }) %>
+		 </ul>
+		  The system computes the Partial GPA based on the four courses and displays the numeric grade to the first digit after the decimal point.
+		  </p>
+		  <p>The Qualified Students page will show a list of students whose Partial GPA is greater than or equal to 2.5</p>
+          </span>
+          
+        </div>
+</div>
+   
+
+

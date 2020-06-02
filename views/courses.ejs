@@ -1,0 +1,32 @@
+
+
+
+ 
+<div class="container">
+  
+  <div>
+  <span>
+    <h1>Qualified Students</h1>
+    <span class="col-6 center">
+     <img src="images/qualified.jpg" alt=""  >
+   </span>
+  </div>
+  <div class="col-6 center">
+	<h2>Qualified Students</h2>
+
+    <table style="width:90%">
+    <tr>
+    <th><h3>Students</h3></th>
+     <th><h3>GPA</h3></th>
+     </tr>
+  <% allCourses.forEach(student => {%>
+  <tr>
+	<th style="font-size:16px"><%= student.name %> </th>
+    <th style="font-size:16px"><%= student.gpa %> </th>
+	  </tr>
+  <% }) %>
+  </table>
+  </span>
+  </div>
+  
+</div>

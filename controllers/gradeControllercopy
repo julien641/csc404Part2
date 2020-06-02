@@ -1,0 +1,71 @@
+
+const express = require('express');
+const router = express.Router();
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+
+/* GET home page. */
+router.get('/', function(req, res, next) {
+    res.render('index', { title: "Courses"})
+});
+var studentGrades = [
+    {
+        name: "Node.js Programming",
+        csc141grade: "A+",
+		csc142grade: "A+",
+		csc240grade: "A+",
+		csc241grade: "A+"
+    },
+    {
+        name: "Node.js Programming",
+        csc141grade: "A+",
+		csc142grade: "A+",
+		csc240grade: "A+",
+		csc241grade: "A+"
+    }
+];
+console.log('in homeController pass 1');
+router.showCourses = (req, res) => {
+    res.render("courses", {
+        allCourses: studentGrades, title: "Course List"
+    });
+};
+console.log('in homeController pass 2');
+router.addCourses = (req, res) => {
+    console.log("in homeController addCourses");
+    var studentName = req.body.name;
+    console.log("name " + studentName);
+    var csc141 = parseInt(req.body.csc141grade);
+	var csc142 = parseInt(req.body.csc142grade);
+	var csc240 = parseInt(req.body.csc240grade);
+	var csc241 = parseInt(req.body.csc241grade);
+	var partialgpa = parseInt(csc141+csc142+csc240+csc241)/4;
+    let allCourses = studentGrades;
+//mongodb scipt
+	
+  MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("test");
+  var myobj = { name: studentName,partialgpa:partialgpa};
+  
+  dbo.collection("contacts").insertOne(myobj, function(err, res) {
+    if (err) throw err;
+    console.log("1 document inserted");
+    db.close();
+  });
+});
+//mongo db script 
+console.log(partialgpa);
+    allCourses.push({name: studentName, csc141grade: csc141,csc142grade: csc142,csc240grade: csc240,csc241grade: csc241});
+    res.render("courses", {
+        allCourses: studentGrades
+    });
+};
+
+console.log('in homeController pass 3');
+router.getNewCourse = (req, res) => {
+    console.log("in homeController getNewCourse");
+    res.render("newcourse", {title: "New Course"});
+};
+module.exports = router;
+

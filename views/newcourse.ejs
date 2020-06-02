@@ -1,0 +1,32 @@
+
+ <div class="container">
+    <div class="col-6">
+      <span class="col-6 center">
+
+        <img src="images/reportcard.png" alt="" height="100" width="100" >
+      </span>
+    </div>
+    <div class="col-5 center">
+      <span>
+        <p>Enter a grade for each of the following courses:</p>
+        <form
+            action="/newcourse" method="post">
+                <table style="width:90%">
+
+        <label for="name">Student Name</label>
+        <input type="text" name="name" id="name" value="">
+		<label for="csc141">CSC 141</label>
+        <input type="text" name="csc141grade" id="csc141grade" value="">
+		<label for="csc142">CSC 142</label>
+        <input type="text" name="csc142grade" id="csc142grade" value="" >
+		<label for="csc240">CSC 240</label>
+        <input type="text" name="csc240grade" id="csc240grade" value="" >
+		<label for="csc241">CSC 241</label>
+        <input type="text" name="csc241grade" id ="csc241grade" value="" >
+        <input type="submit" value="Submit">
+        </form>
+      </span>
+    </div>
+     <p><%=error%></p>
+</div>
+ 
